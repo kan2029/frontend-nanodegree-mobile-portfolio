@@ -71,3 +71,22 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+
+### Steps undertaken to bring optimize online portfolio:
+1. Converted <link href="css/style.css" rel="stylesheet"> to inline CS and minified the same
+2. Added media="print" attribute to <link href="css/print.css" rel="stylesheet"> since it is only used for printing and not while rendering pages on load.
+3. Added async attribute to <script src="http://www.google-analytics.com/analytics.js"></script> since it does not manipulate DOM.
+4. Shifted the folowing code at the bottom of the page:
+	<script>
+      (function(w,g){w['GoogleAnalyticsObject']=g;
+      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+      // Optional TODO: replace with your Google Analytics profile ID.
+      ga('create', 'UA-XXXX-Y');
+      ga('send', 'pageview');
+    </script>
+
+
+### Steps undertaken to bring frame rate to 60fps:
+1. Removed determineDx function since it used layout properties before style in every loop. Modified chchangePizzaSizes function based on it.
+2. Created a variable randomPizzaContainer so that the element is not referred multiple times by its jQuery selector.
+3. Added requestAnimationFrame function
